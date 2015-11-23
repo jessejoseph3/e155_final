@@ -76,7 +76,7 @@ void write_png_file(char *filename, char *image_one_dim) {
   // Use png_set_filler().
   //png_set_filler(png, 0, PNG_FILLER_AFTER);
 
- 	png_bytep row_pointers[height];
+ 	png_bytep *row_pointers[height];
  	char px[1];
  	png_bytep row[width];
  	int x,y;
