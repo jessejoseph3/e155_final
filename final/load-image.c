@@ -5,7 +5,7 @@ static png_infop info_ptr;
 
 int loadimage(char *filename)
 {
-	FILE *infile = fopen(filename, "rb");
+	infile = fopen(filename, "rb");
 
 	unsigned char sig[8];
   
@@ -34,11 +34,67 @@ int loadimage(char *filename)
     png_read_info(png_ptr, info_ptr);
 
 
+
     //png_get_IHDR(png_ptr, info_ptr, &pwidth, &pheight, &bit_depth,
     //  &color_type, NULL, NULL, NULL);
     //*width = pwidth;
     //*height = pheight;
   
     return 0;
+}
 
+
+void write_png_file(char *filename, char *image_one_dim) {
+
+ 	FILE *fp = fopen(filename, "wb");
+ 	if(!fp) abort();
+
+ 	png_structp png = png_create_write_struct(PNG_LIBPNG_VER_STRING, NULL, NULL, NULL);
+ 	if (!png) abort();
+
+ 	png_infop info = png_create_info_struct(png);
+ 	if (!info) abort();
+
+ 	if (setjmp(png_jmpbuf(png))) abort();
+
+ 	png_init_io(png, fp);
+
+  // Output is 8bit depth, RGBA format.
+ 	png_set_IHDR(
+    	png,
+    	info,
+    	width, height,
+    	8,
+    	PNG_COLOR_TYPE_GRAY,
+    	PNG_INTERLACE_NONE,
+    	PNG_COMPRESSION_TYPE_DEFAULT,
+    	PNG_FILTER_TYPE_DEFAULT
+	);
+  	png_write_info(png, info);
+
+  // To remove the alpha channel for PNG_COLOR_TYPE_RGB format,
+  // Use png_set_filler().
+  //png_set_filler(png, 0, PNG_FILLER_AFTER);
+
+ 	png_bytep row_pointers[height];
+ 	png_bytep px[1];
+ 	png_bytep row[width];
+ 	int x,y;
+ 	for(y = 0; y < height; y++){
+ 		for(x = 0; x < width; x++){
+ 			px[0] = image_one_dim[width*y + x];
+ 			row[x] = px;
+ 		}
+ 		row_pointers[y] = row
+ 	}
+
+  	png_write_image(png, row_pointers);
+ 	png_write_end(png, NULL);
+
+ 	for(int y = 0; y < height; y++) {
+   		free(row_pointers[y]);
+  	}
+  	free(row_pointers);
+
+  	fclose(fp);
 }

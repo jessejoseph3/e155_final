@@ -3,8 +3,13 @@
 
 
 char *file = "obama.png";
+char *outfile = "output.png";
+
+FILE *infile;
 char *edges;
 int width, height;
+
+
 
 #include "load-image.c"
 #include "compute-edges.c"
@@ -50,6 +55,8 @@ void main(int argc, char *argv[])
   	}
 
   	png_read_image(png_ptr, row_pointers);
+  	fclose(infile);
+
 
 	if(color_type == PNG_COLOR_TYPE_GRAY){
    		edges = find_edges_grayscale(row_pointers);
@@ -57,6 +64,8 @@ void main(int argc, char *argv[])
 	else{
 		edges = find_edges_color(row_pointers);
 	}
+
+	write_png_file(outfile,edges);
 
 }
 
