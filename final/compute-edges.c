@@ -1,4 +1,4 @@
-#include <Math.h>
+#include <math.h>
 
 const int sobelx = {-1, 0, 1, 
 					-2, 0, 2,
