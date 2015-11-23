@@ -1,7 +1,7 @@
 #include "png.h"
 
 
-int loadimage(char *filename, png_structp png_ptr, png_infop info_ptr)
+int loadimage(char *filename)
 {
 	FILE *infile = fopen(filename, "rb");
 
