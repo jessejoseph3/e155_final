@@ -2,38 +2,7 @@
 
 const double threshold = 0.3;
 
-char * find_edges_grayscale(png_bytep *row_pointers)
-{
-	edges = (char *) malloc(height*width);
-	char valueToWrite;
-	double ave_diff_of_image = average_diff_of_image(0,1);
-	int y;
-	int x;
-	double aveWindow;
-	for(y = 0; y < height; y++) {
-    	png_bytep row = row_pointers[y];
-    	for(x = 0; x < width; x++) {
-      		png_bytep px = &(row[x]);
-      		if (x == 0
-      			|| x == width - 1
-      			|| y == 0
-      			|| y == height -1){
-      			valueToWrite = 0x0;
-      		}
-      		else {
-      			aveWindow = average_difference(x,y,0,1);
-      			if(aveWindow > threshold*ave_diff_of_image){
-      				valueToWrite = 0xFF;
-      			}
-      			else{
-      				valueToWrite = 0x0;
-      			}
-      		}
-      		edges[y*width + x] = valueToWrite;
-   		}
-    }
-    return edges;
-}
+
 
 double average_difference(int x, int y,
 						int c, int pxsize,
@@ -83,4 +52,37 @@ double average_diff_of_image(int c, int pxsize,
    		}
     }
     return ave_diff_of_image;
+}
+
+char * find_edges_grayscale(png_bytep *row_pointers)
+{
+	edges = (char *) malloc(height*width);
+	char valueToWrite;
+	double ave_diff_of_image = average_diff_of_image(0,1);
+	int y;
+	int x;
+	double aveWindow;
+	for(y = 0; y < height; y++) {
+    	png_bytep row = row_pointers[y];
+    	for(x = 0; x < width; x++) {
+      		png_bytep px = &(row[x]);
+      		if (x == 0
+      			|| x == width - 1
+      			|| y == 0
+      			|| y == height -1){
+      			valueToWrite = 0x0;
+      		}
+      		else {
+      			aveWindow = average_difference(x,y,0,1);
+      			if(aveWindow > threshold*ave_diff_of_image){
+      				valueToWrite = 0xFF;
+      			}
+      			else{
+      				valueToWrite = 0x0;
+      			}
+      		}
+      		edges[y*width + x] = valueToWrite;
+   		}
+    }
+    return edges;
 }
