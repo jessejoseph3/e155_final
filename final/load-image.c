@@ -78,11 +78,11 @@ void write_png_file(char *filename, char *image_one_dim) {
 
  	png_bytep row_pointers[height];
  	png_bytep px;
- 	png_bytep row;
+ 	png_bytep *row;
  	int x,y;
  	for(y = 0; y < height; y++){
  		for(x = 0; x < width; x++){
- 			px[0] = (char) image_one_dim[width*y + x];
+ 			px[0] = (png_byte) image_one_dim[width*y + x];
  			row[x] = (png_bytep) px;
  		}
  		row_pointers[y] = row;
