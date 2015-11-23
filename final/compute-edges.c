@@ -93,7 +93,7 @@ char * find_edges_color(png_bytep *row_pointers)
 	char valueToWrite;
 	double ave_diff_of_image[3] = {average_diff_of_image(0,3, row_pointers),
 									average_diff_of_image(1, 3, row_pointers),
-									average_diff_of_image(2, 3, row_pointers)}
+									average_diff_of_image(2, 3, row_pointers)};
 	int y;
 	int x;
 	int c;
@@ -103,9 +103,6 @@ char * find_edges_color(png_bytep *row_pointers)
     	for(x = 0; x < width; x++) {
     		valueToWrite = 0x0;
       		for(c = 0; c < 3; c++){
-
-      		
-
       			png_bytep px = &(row[x]);
       			if (x == 0
       				|| x == width - 1
