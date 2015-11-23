@@ -46,7 +46,7 @@ void main(int argc, char *argv[])
 
     png_read_update_info(png_ptr,info_ptr);
 
-    
+    printf("allocating memory... \n");
     png_bytep row_pointers[height];
 
     int y;
@@ -54,10 +54,11 @@ void main(int argc, char *argv[])
     	row_pointers[y] = (png_byte*)malloc(png_get_rowbytes(png_ptr,info_ptr));
   	}
 
+  	printf("reading image into array... \n")
   	png_read_image(png_ptr, row_pointers);
   	fclose(infile);
 
-
+  	printf("finding edges... \n");
 	if(color_type == PNG_COLOR_TYPE_GRAY){
    		edges = find_edges_grayscale(row_pointers);
 	}
@@ -65,6 +66,7 @@ void main(int argc, char *argv[])
 		edges = find_edges_color(row_pointers);
 	}
 
+	printf("writing output file...\n");
 	write_png_file(outfile,edges);
 
 }
