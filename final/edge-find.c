@@ -4,7 +4,7 @@
 
 static png_structp png_ptr;
 static png_infop info_ptr;
-const char * file = 'obama.png';
+char *file = 'obama.png';
 
 void main(int argc, char *argv[])
 {
