@@ -79,7 +79,7 @@ void main(int argc, char *argv[])
 	write_png_file(edgesfile,edges);
 
 	printf("thinning edges...\n");
-	for(int i; i < height*width; i++){
+	for(int i = 0; i < height*width; i++){
 		if(edges[i] = 0xFF){
 			edges[i] = 1;
 		}
@@ -96,7 +96,7 @@ void main(int argc, char *argv[])
 
 	free(edges);
 
-	for(int i; i < height*width; i++){
+	for(int i = 0; i < height*width; i++){
 		if(thin_edges[i] = 1){
 			thin_edges[i] = 0xFF;
 		}
