@@ -1,3 +1,5 @@
+#define HI 0xFF
+
 void printPicture(char* pic, int height, int width) {
 	for(int row = 0; row < height; row++) {
 		int o = row * height;
@@ -26,7 +28,7 @@ char* lineThinning(char* edgePic, int height, int width, int step) {
 	int count = 0;
 	for(int row = 1; row < height - 1; row++) {
 		for(int col = 1; col < width - 1; col ++) {
-			if(edgePic[row*width + col] == 0xFF) {	//OxFF USED TO BE 1
+			if(edgePic[row*width + col] == HI) {	//OxFF USED TO BE 1
 
 				// if you add these to row and col
 				// you go around a pixel in a clockwise circle
@@ -42,7 +44,7 @@ char* lineThinning(char* edgePic, int height, int width, int step) {
 				int Ncount = 0;
 				int Scount = 0;
 				for(int i = 0; i < 8; i++) {
-					if(P[i] == 1) {
+					if(P[i] == HI) {
 						Ncount++;
 						if(i == 0) {
 							if(P[7] == 0)
@@ -61,7 +63,7 @@ char* lineThinning(char* edgePic, int height, int width, int step) {
 					int FourSixEight = P[2] * P[4] * P[6];
 					if( (Ncount >= 2) && (Ncount <= 6) && (Scount == 1) && 
 						(TwoFourSix == 0) && (FourSixEight == 0) && (P[5] != 0) ) {
-						thinLinePic[row*width + col] = 0xFF;	//OxFF WAS 1 HERE
+						thinLinePic[row*width + col] = HI;	
 						count++;
 					}
 				}
@@ -71,7 +73,7 @@ char* lineThinning(char* edgePic, int height, int width, int step) {
 					int TwoSixEight = P[0] * P[4] * P[6];
 					if( (Ncount >= 2) && (Ncount <= 6) && (Scount == 1) && 
 						(TwoFourEight == 0) && (TwoSixEight == 0) && (P[5] != 0) ) {
-						thinLinePic[row*width + col] = 0xFF;	//0xFF WAS 1 HERE
+						thinLinePic[row*width + col] = HI;	
 						count++;
 					}
 				}
@@ -91,7 +93,7 @@ char* lineThinning(char* edgePic, int height, int width, int step) {
 		// delete pixels
 		for(int row = 1; row < height - 1; row++) {
 			for(int col = 1; col < width - 1; col ++) {
-				if(thinLinePic[row*width + col] == 1)
+				if(thinLinePic[row*width + col] == HI)
 					edgePic[row*width + col] = 0;
 			}
 		}
