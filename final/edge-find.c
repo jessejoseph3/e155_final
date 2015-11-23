@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "load-image.c"
-
+#include "compute-edges.c"
 
 char *file = "obama.png";
 char *edges;
