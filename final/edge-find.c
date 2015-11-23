@@ -82,7 +82,7 @@ void main(int argc, char *argv[])
 	printf("thinning edges...\n");
 	for(int i = 0; i < height*width; i++){
 		printf("%d \n",edges[i]);
-		if(edges[i] = 0xFF){
+		if(edges[i] = 255){
 			thinedges[i] = 1;
 
 		}
@@ -100,10 +100,10 @@ void main(int argc, char *argv[])
 
 	for(int i = 0; i < height*width; i++){
 		if(thinedges[i] = 1){
-			edges[i] = 0xFF;
+			edges[i] = 255;
 		}
 		else{
-			edges[i] = 0x00;
+			edges[i] = 0;
 		}
 	}
 
