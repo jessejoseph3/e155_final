@@ -15,7 +15,7 @@ int width, height;
 
 #include "load-image.c"
 #include "compute-edges.c"
-//#include "lineThinning.c"
+#include "lineThinning.c"
 
 void main(int argc, char *argv[])
 {
@@ -69,14 +69,20 @@ void main(int argc, char *argv[])
 		edges = find_edges_color(row_pointers);
 	}
 
-	//printf("thinning edges...");
-	//thin_edges = lineThinning(edges, height, width, 1);
+	for(y=0; y < height; y++){
+		free(row_pointers[y]);
+	}
+	free(row_pointers);
 
-	//free(edges);
+	printf("thinning edges...");
+	thin_edges = lineThinning(edges, height, width, 1);
+
+	free(edges);
 
 	printf("writing output file...\n");
-	write_png_file(outfile,edges);
+	write_png_file(outfile,thin_edges);
 
+	free(thin_edges);
 
 }
 
