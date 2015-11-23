@@ -72,7 +72,6 @@ void main(int argc, char *argv[])
 	for(y=0; y < height; y++){
 		free(row_pointers[y]);
 	}
-	free(row_pointers);
 
 	printf("thinning edges...");
 	thin_edges = lineThinning(edges, height, width, 1);
