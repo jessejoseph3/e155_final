@@ -44,11 +44,12 @@ void main(int argc, char *argv[])
     png_bytep row_pointers[height];
 
     row_pointers = (png_bytep*)malloc(sizeof(png_bytep) * height);
-  	for(int y = 0; y < height; y++) {
+    int y;
+  	for(y = 0; y < height; y++) {
     	row_pointers[y] = (png_byte*)malloc(png_get_rowbytes(png_ptr,info_ptr));
   	}
 
-  	png_read_image(png, row_pointers);
+  	png_read_image(png_ptr, row_pointers);
 
    
 	//char **row_pointers;
