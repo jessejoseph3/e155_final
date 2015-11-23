@@ -83,7 +83,7 @@ void write_png_file(char *filename, char *image_one_dim) {
  	int x,y;
  	for(y = 0; y < height; y++){
  		for(x = 0; x < width; x++){
- 			&row[x] = image_one_dim[y*width + x]);
+ 			row[x] = image_one_dim[y*width + x];
  			bytesWritten++;
  		}
  		png_write_row(png, row);
