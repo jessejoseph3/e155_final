@@ -8,6 +8,8 @@ char *edges;
 char *original_image;
 int width, height;
 
+
+
 void main(int argc, char *argv[])
 {
 	int exitStatus = loadimage(file);
