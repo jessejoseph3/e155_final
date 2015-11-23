@@ -81,8 +81,10 @@ void main(int argc, char *argv[])
 	char *thinedges = malloc(height*width*sizeof(char));
 	printf("thinning edges...\n");
 	for(int i = 0; i < height*width; i++){
+		printf("%d \n",edges[i]);
 		if(edges[i] = 0xFF){
 			thinedges[i] = 1;
+
 		}
 		else{
 			thinedges[i] = 0;
