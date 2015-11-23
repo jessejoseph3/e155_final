@@ -51,11 +51,12 @@ void main(int argc, char *argv[])
 
   	png_read_image(png_ptr, row_pointers);
 
-   
-	//char **row_pointers;
-
-	
-	//row_pointers = png_get_rows(png_ptr, info_ptr);
+	if(color_type == PNG_COLOR_TYPE_GRAY){
+   		edges = find_edges_grayscale(*row_pointers);
+	}
+	else{
+		edges = find_edges_color(*row_pointers);
+	}
 
 }
 

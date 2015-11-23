@@ -86,3 +86,43 @@ char * find_edges_grayscale(png_bytep *row_pointers)
     }
     return edges;
 }
+
+char * find_edges_color(png_bytep *row_pointers)
+{
+	edges = (char *) malloc(height*width);
+	char valueToWrite;
+	double ave_diff_of_image[3] = {average_diff_of_image(0,3, row_pointers),
+									average_diff_of_image(1, 3, row_pointers),
+									average_diff_of_image(2, 3, row_pointers)}
+	int y;
+	int x;
+	int c;
+	double aveWindow;
+	for(y = 0; y < height; y++) {
+    	png_bytep row = row_pointers[y];
+    	for(x = 0; x < width; x++) {
+    		valueToWrite = 0x0;
+      		for(c = 0; c < 3; c++){
+
+      		
+
+      			png_bytep px = &(row[x]);
+      			if (x == 0
+      				|| x == width - 1
+      				|| y == 0
+      				|| y == height -1){
+      				valueToWrite = 0x0;
+      			}
+      			else {
+      				aveWindow = average_difference(x,y,c,3, row_pointers);
+      				if(aveWindow > threshold*ave_diff_of_image[c]){
+      					valueToWrite |= 0xFF;
+      				}
+      			}
+      		}
+
+      		edges[y*width + x] = valueToWrite;
+   		}
+    }
+    return edges;
+}
