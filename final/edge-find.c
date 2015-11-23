@@ -2,17 +2,20 @@
 #include <stdio.h>
 
 
-char *file = "obama.png";
+char *file = "obama .png";
 char *outfile = "output.png";
 
 FILE *infile;
 char *edges;
+char *thin_edges;
+
 int width, height;
 
 
 
 #include "load-image.c"
 #include "compute-edges.c"
+#include "lineThinning.c"
 
 void main(int argc, char *argv[])
 {
@@ -66,8 +69,11 @@ void main(int argc, char *argv[])
 		edges = find_edges_color(row_pointers);
 	}
 
+	printf("thinning edges...")
+	thin_edges = lineThinning(edges, height, width, 1);
+
 	printf("writing output file...\n");
-	write_png_file(outfile,edges);
+	write_png_file(outfile,thin_edges);
 
 }
 
