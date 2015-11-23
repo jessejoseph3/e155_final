@@ -11,6 +11,7 @@ char* lineThinning(char* edgePic, int height, int width, int step) {
 	char thinLinePic[height * width];
 
 	// initialize array at 0's
+	
 	for(int row = 0; row < height; row++) {
 		for(int col = 0; col < width; col ++) {
 			thinLinePic[row*width + col] = 0;
