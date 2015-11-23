@@ -93,6 +93,6 @@ void write_png_file(char *filename, char *image_one_dim) {
  	printf("bytes written: %d\n",bytesWritten);
 
  	fclose(fp);
-  	free(row);
+  free(row);
 
 }

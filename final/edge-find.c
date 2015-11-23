@@ -72,8 +72,12 @@ void main(int argc, char *argv[])
 	printf("thinning edges...");
 	thin_edges = lineThinning(edges, height, width, 1);
 
+	free(edges);
+
 	printf("writing output file...\n");
 	write_png_file(outfile,thin_edges);
+
+	free(thin_edges);
 
 }
 
