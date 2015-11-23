@@ -15,7 +15,7 @@ int width, height;
 
 #include "load-image.c"
 #include "compute-edges.c"
-#include "lineThinning.c"
+//#include "lineThinning.c"
 
 void main(int argc, char *argv[])
 {
