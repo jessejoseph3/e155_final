@@ -7,7 +7,6 @@ char *file = "obama.png";
 char *edges;
 char *original_image;
 int width, height;
-png_bytep row_pointers[height];
 
 void main(int argc, char *argv[])
 {
@@ -42,10 +41,11 @@ void main(int argc, char *argv[])
     png_read_update_info(png_ptr,info_ptr);
 
     
+    png_bytep row_pointers[height];
 
     row_pointers = (png_bytep*)malloc(sizeof(png_bytep) * height);
   	for(int y = 0; y < height; y++) {
-    	row_pointers[y] = (png_byte*)malloc(png_get_rowbytes(png,info));
+    	row_pointers[y] = (png_byte*)malloc(png_get_rowbytes(png_ptr,info_ptr));
   	}
 
   	png_read_image(png, row_pointers);
