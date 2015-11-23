@@ -85,13 +85,13 @@ void write_png_file(char *filename, char *image_one_dim) {
  			px[0] = image_one_dim[width*y + x];
  			row[x] = px;
  		}
- 		row_pointers[y] = row
+ 		row_pointers[y] = row;
  	}
 
   	png_write_image(png, row_pointers);
  	png_write_end(png, NULL);
 
- 	for(int y = 0; y < height; y++) {
+ 	for(y = 0; y < height; y++) {
    		free(row_pointers[y]);
   	}
   	free(row_pointers);
