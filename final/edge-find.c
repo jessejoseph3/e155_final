@@ -77,7 +77,6 @@ void main(int argc, char *argv[])
 	printf("writing output file...\n");
 	write_png_file(outfile,edges);
 
-	free(edges);
 
 }
 
