@@ -72,16 +72,14 @@ double average_diff_of_image(int c, int pxsize,
     	for(x = 0; x < width; x++) {
       		png_bytep px = &(row[x * pxsize]);
       		average += (double) px[c]/numPixels;
-      		}
-   		}
-    }
+      	}
+   	}
     double ave_diff_of_image = 0.0;
     for(y = 0; y < height; y++) {
     	png_bytep row = row_pointers[y];
     	for(x = 0; x < width; x++) {
       		png_bytep px = &(row[x * pxsize]);
       		ave_diff_of_image += fabs(px[c] - average)/numPixels;
-      		}
    		}
     }
     return ave_diff_of_image;
