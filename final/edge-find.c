@@ -3,7 +3,8 @@
 
 
 char *file = "obama.png";
-char *outfile = "output.png";
+char *edgesfile = "edges.png";
+char *thin_edgesfile = "thinedges.png";
 
 FILE *infile;
 char *edges;
@@ -51,11 +52,11 @@ void main(int argc, char *argv[])
 
     printf("allocating memory... \n");
     png_bytep row_pointers[height];
-
     int y;
   	for(y = 0; y < height; y++) {
     	row_pointers[y] = (png_byte*)malloc(png_get_rowbytes(png_ptr,info_ptr));
   	}
+
 
   	printf("reading image into array... \n");
   	png_read_image(png_ptr, row_pointers);
@@ -73,13 +74,17 @@ void main(int argc, char *argv[])
 		free(row_pointers[y]);
 	}
 
-	printf("thinning edges...");
+
+	printf("writing edges file...\n");
+	write_png_file(edgesfile,edges);
+
+	printf("thinning edges...\n");
 	thin_edges = lineThinning(edges, height, width, 1);
 
 	free(edges);
 
 	printf("writing output file...\n");
-	write_png_file(outfile,thin_edges);
+	write_png_file(thin_edgesfile,thin_edges);
 
 	free(thin_edges);
 
