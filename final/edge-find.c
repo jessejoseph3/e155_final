@@ -10,7 +10,7 @@ void main(int argc, char *argv[])
 	int exitStatus = loadimage(file);
 	printf("image loaded? %d \n",exitStatus);
 
-	png_read_png(png_ptr, info_ptr, 0, NULL);
+	//png_read_png(png_ptr, info_ptr, 0, NULL);
 	if(png_ptr == NULL)
 		printf("png_ptr is null\n");
 	if(info_ptr == NULL)
