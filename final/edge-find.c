@@ -2,14 +2,12 @@
 #include <stdio.h>
 #include "load-image.c"
 
-png_structp png_ptr;
-png_infop info_ptr;
 
 char *file = "obama.png";
 
 void main(int argc, char *argv[])
 {
-	int exitStatus = loadimage(file, png_ptr, info_ptr);
+	int exitStatus = loadimage(file);
 	printf("image loaded? %d \n",exitStatus);
 
 	png_read_png(png_ptr, info_ptr, 0, NULL);
