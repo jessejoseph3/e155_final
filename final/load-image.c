@@ -5,11 +5,11 @@
 
 
 
-int loadimage(char * filename)
+int loadimage(char *filename, png_structp png_ptr, png_infop info_ptr)
 {
-	FILE *infile = fopen(file_name, "rb");
+	FILE *infile = fopen(filename, "rb");
 
-	uch sig[8];
+	unsigned char sig[8];
   
     fread(sig, 1, 8, infile);
     if (!png_check_sig(sig, 8))
