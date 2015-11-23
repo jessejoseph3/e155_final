@@ -27,7 +27,7 @@ void main(int argc, char *argv[])
         png_set_palette_to_rgb(png_ptr);		//standardize paletted images
 
     if (bit_depth == 16)
-        png_set_strip_16(png_ptr)		//standardize 16 b/channel images to 8 b/channel
+        png_set_strip_16(png_ptr);		//standardize 16 b/channel images to 8 b/channel
 
     if (color_type == PNG_COLOR_TYPE_GRAY &&
         bit_depth < 8) png_set_gray_1_2_4_to_8(png_ptr);	//standardize grayscale images
