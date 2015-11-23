@@ -5,6 +5,8 @@
 
 char *file = "obama.png";
 char *edges;
+char *original_image;
+int width, height;
 
 void main(int argc, char *argv[])
 {
@@ -18,8 +20,8 @@ void main(int argc, char *argv[])
 
 	png_byte bit_depth 	= 	png_get_bit_depth(png_ptr, info_ptr);
 	png_byte color_type	=	png_get_color_type(png_ptr, info_ptr);
-	int width 	=	png_get_image_width(png_ptr, info_ptr);
-	int height	=	png_get_image_height(png_ptr, info_ptr);
+	width 	=	png_get_image_width(png_ptr, info_ptr);
+	height	=	png_get_image_height(png_ptr, info_ptr);
 
 	printf("width: %d \n", width);
 	printf("height: %d \n", height);
@@ -38,18 +40,14 @@ void main(int argc, char *argv[])
 
     png_read_update_info(png_ptr,info_ptr);
 
-    if (color_type == PNG_COLOR_TYPE_GRAY)
-    {
-    	edges = (char *) malloc(width*height);
-    }
-    else 
-    {
-    	edges = (char *) malloc(3*width*height);
-    }
+    png_bytep row_pointers[height];
+    png_read_image(png_ptr, row_pointers);
+
+   
 	//char **row_pointers;
 
 	
 	//row_pointers = png_get_rows(png_ptr, info_ptr);
 
-
 }
+
