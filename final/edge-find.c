@@ -92,23 +92,22 @@ void main(int argc, char *argv[])
 	
 
 
-	thin_edges = lineThinning(edges, height, width, 1);
+	edges = lineThinning(edges, height, width, 1);
 
-	free(edges);
 
 	for(int i = 0; i < height*width; i++){
-		if(thin_edges[i] = 1){
-			thin_edges[i] = 0xFF;
+		if(edges[i] = 1){
+			edges[i] = 0xFF;
 		}
 		else{
-			thin_edges[i] = 0x00;
+			edges[i] = 0x00;
 		}
 	}
 
 	printf("writing output file...\n");
-	write_png_file(thin_edgesfile,thin_edges);
+	write_png_file(thin_edgesfile,edges);
 
-	free(thin_edges);
+	free(edges);
 
 }
 
