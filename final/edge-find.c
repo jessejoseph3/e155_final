@@ -54,7 +54,7 @@ void main(int argc, char *argv[])
     	row_pointers[y] = (png_byte*)malloc(png_get_rowbytes(png_ptr,info_ptr));
   	}
 
-  	printf("reading image into array... \n")
+  	printf("reading image into array... \n");
   	png_read_image(png_ptr, row_pointers);
   	fclose(infile);
 
