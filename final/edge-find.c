@@ -79,9 +79,33 @@ void main(int argc, char *argv[])
 	write_png_file(edgesfile,edges);
 
 	printf("thinning edges...\n");
-	thin_edges = lineThinning(edges, height, width, 1);
+	char edges_thresholded[height*width];
+	for(int i; i < height*width; i++){
+		if(edges[i] = 0xFF){
+			edges_thresholded[i] = 1;
+		}
+		else{
+			edges_thresholded[i] = 0;
+		}
+	}
+
+
+	
+
+
+	thin_edges = lineThinning(edges_thresholded, height, width, 1);
 
 	free(edges);
+
+	char thinedges_thresholded[height*width];
+	for(int i; i < height*width; i++){
+		if(thin_edges[i] = 1){
+			thinedges_thresholded[i] = 0xFF;
+		}
+		else{
+			edges_thresholded[i] = 0x00;
+		}
+	}
 
 	printf("writing output file...\n");
 	write_png_file(thin_edgesfile,thin_edges);
