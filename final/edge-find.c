@@ -10,7 +10,6 @@ void main(int argc, char *argv[])
 	int exitStatus = loadimage(file);
 	printf("image loaded? %d \n",exitStatus);
 
-	//png_read_png(png_ptr, info_ptr, 0, NULL);
 	if(png_ptr == NULL)
 		printf("png_ptr is null\n");
 	if(info_ptr == NULL)
@@ -24,6 +23,16 @@ void main(int argc, char *argv[])
 	printf("width: %d \n", width);
 	printf("height: %d \n", height);
 
+	if (color_type == PNG_COLOR_TYPE_PALETTE)
+        png_set_palette_to_rgb(png_ptr);		//standardize paletted images
+
+    if (bit_depth == 16)
+        png_set_strip_16(png_ptr)		//standardize 16 b/channel images to 8 b/channel
+
+    if (color_type == PNG_COLOR_TYPE_GRAY &&
+        bit_depth < 8) png_set_gray_1_2_4_to_8(png_ptr);	//standardize grayscale images
+
+    
 	//char **row_pointers;
 
 	

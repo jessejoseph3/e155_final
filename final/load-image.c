@@ -33,11 +33,7 @@ int loadimage(char *filename)
     png_set_sig_bytes(png_ptr, 8);
     png_read_info(png_ptr, info_ptr);
 
-    if(png_ptr == NULL)
-		printf("png_ptr is null\n");
-	if(info_ptr == NULL)
-		printf("info_ptr is null\n");
-    
+
     //png_get_IHDR(png_ptr, info_ptr, &pwidth, &pheight, &bit_depth,
     //  &color_type, NULL, NULL, NULL);
     //*width = pwidth;
