@@ -1,16 +1,8 @@
 #include <math.h>
 
-const int sobelx = {-1, 0, 1, 
-					-2, 0, 2,
-					-1, 0, 1};
-					
-const int sobely = {-1, -2, -1,
-					0, 0, 0,
-					1, 2, 1};
-
 const double threshold = 0.3;
 
-char *find_edges_grayscale()
+char *find_edges_grayscale(png_structp png_ptr, png_infop info_ptr)
 {
 	edges = (char *) malloc(height*width);
 	char valueToWrite;
@@ -46,6 +38,7 @@ double average_difference(int x, int y, int c, int pxsize)
 {
 	int i, j;
 	int sum;
+	int average = 0.0;
 	for(i = -1; i < 2; i++){
 		png_bytep row = row_pointers[y + i];
 		for(j = -1; j < 2; j++){
