@@ -7,7 +7,7 @@
 
 int loadimage(char *filename, png_structp png_ptr, png_infop info_ptr)
 {
-	FILE *infile = fopen('obama.png', "rb");
+	FILE *infile = fopen(filename, "rb");
 
 	unsigned char sig[8];
   
