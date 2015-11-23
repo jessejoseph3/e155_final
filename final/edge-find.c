@@ -15,8 +15,8 @@ void main(int argc, char *argv[])
 	if(info_ptr == NULL)
 		printf("info_ptr is null\n");
 
-	png_byte bitDepth 	= 	png_get_bit_depth(png_ptr, info_ptr);
-	png_byte colorType	=	png_get_color_type(png_ptr, info_ptr);
+	png_byte bit_depth 	= 	png_get_bit_depth(png_ptr, info_ptr);
+	png_byte color_type	=	png_get_color_type(png_ptr, info_ptr);
 	int width 	=	png_get_image_width(png_ptr, info_ptr);
 	int height	=	png_get_image_height(png_ptr, info_ptr);
 
@@ -32,7 +32,7 @@ void main(int argc, char *argv[])
     if (color_type == PNG_COLOR_TYPE_GRAY &&
         bit_depth < 8) png_set_gray_1_2_4_to_8(png_ptr);	//standardize grayscale images
 
-    
+
 	//char **row_pointers;
 
 	
