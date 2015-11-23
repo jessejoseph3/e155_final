@@ -58,7 +58,7 @@ char * find_edges_grayscale(png_bytep *row_pointers)
 {
 	edges = (char *) malloc(height*width);
 	char valueToWrite;
-	double ave_diff_of_image = average_diff_of_image(0,1);
+	double ave_diff_of_image = average_diff_of_image(0,1, row_pointers);
 	int y;
 	int x;
 	double aveWindow;
@@ -73,7 +73,7 @@ char * find_edges_grayscale(png_bytep *row_pointers)
       			valueToWrite = 0x0;
       		}
       		else {
-      			aveWindow = average_difference(x,y,0,1);
+      			aveWindow = average_difference(x,y,0,1, row_pointers);
       			if(aveWindow > threshold*ave_diff_of_image){
       				valueToWrite = 0xFF;
       			}
