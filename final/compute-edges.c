@@ -2,7 +2,9 @@
 
 const double threshold = 0.3;
 
-char *find_edges_grayscale(png_structp png_ptr, png_infop info_ptr)
+char *find_edges_grayscale(png_structp png_ptr,
+						 png_infop info_ptr,
+						 png_bytep *row_pointers);
 {
 	edges = (char *) malloc(height*width);
 	char valueToWrite;
