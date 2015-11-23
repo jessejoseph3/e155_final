@@ -77,7 +77,7 @@ void write_png_file(char *filename, char *image_one_dim) {
   //png_set_filler(png, 0, PNG_FILLER_AFTER);
 
  	png_bytep *row_pointers[height];
- 	png_byte px;
+ 	png_bytep px;
  	png_bytep row[width];
  	int x,y;
  	for(y = 0; y < height; y++){
