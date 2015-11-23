@@ -1,8 +1,4 @@
-#include <stdlib.h>
-#include <stdio.h>
-#include <png.h>
-
-
+#include "png.h"
 
 
 int loadimage(char *filename, png_structp png_ptr, png_infop info_ptr)
