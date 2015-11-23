@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 
-char *file = "obama .png";
+char *file = "obama.png";
 char *outfile = "output.png";
 
 FILE *infile;
