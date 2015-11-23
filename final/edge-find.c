@@ -4,6 +4,7 @@
 
 
 char *file = "obama.png";
+char *edges;
 
 void main(int argc, char *argv[])
 {
@@ -33,8 +34,18 @@ void main(int argc, char *argv[])
         bit_depth < 8) png_set_gray_1_2_4_to_8(png_ptr);	//standardize grayscale images
 
     if (color_type & PNG_COLOR_MASK_ALPHA)	
-        png_set_strip_alpha(png_ptr);		//get rid of alpha level (unneeded)
+        png_set_strip_alpha(png_ptr);		//get rid of unneeded alpha level data
 
+    png_read_update_info(png_ptr,info_ptr);
+
+    if (color_type == PNG_COLOR_TYPE_GRAY)
+    {
+    	edges = (char *) malloc(width*height);
+    }
+    else 
+    {
+    	edges = (char *) malloc(3*width*height);
+    }
 	//char **row_pointers;
 
 	
