@@ -28,7 +28,7 @@ int loadimage(char *filename, png_structp png_ptr, png_infop info_ptr)
     }
 
 	png_init_io(png_ptr, infile);
-    //png_set_sig_bytes(png_ptr, 8);
+    png_set_sig_bytes(png_ptr, 8);
     png_read_info(png_ptr, info_ptr);
 
     //png_get_IHDR(png_ptr, info_ptr, &pwidth, &pheight, &bit_depth,
