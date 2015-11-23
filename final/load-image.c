@@ -76,16 +76,19 @@ void write_png_file(char *filename, char *image_one_dim) {
   // Use png_set_filler().
   //png_set_filler(png, 0, PNG_FILLER_AFTER);
 
+  	int bytesWritten = 0;
  	png_bytep row_pointers[height];
  	png_bytep row;
  	int x,y;
  	for(y = 0; y < height; y++){
  		for(x = 0; x < width; x++){
  			row[x] = (png_byte) image_one_dim[width*y + x];
+ 			bytesWritten++;
  		}
  		row_pointers[y] = row;
  	}
 
+ 	printf("bytes written: %d\n",bytesWritten);
   	png_write_image(png, row_pointers);
  	png_write_end(png, NULL);
 
