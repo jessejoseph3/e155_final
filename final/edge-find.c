@@ -69,15 +69,15 @@ void main(int argc, char *argv[])
 		edges = find_edges_color(row_pointers);
 	}
 
-	printf("thinning edges...");
-	thin_edges = lineThinning(edges, height, width, 1);
+	//printf("thinning edges...");
+	//thin_edges = lineThinning(edges, height, width, 1);
 
-	free(edges);
+	//free(edges);
 
 	printf("writing output file...\n");
-	write_png_file(outfile,thin_edges);
+	write_png_file(outfile,edges);
 
-	free(thin_edges);
+	free(edges);
 
 }
 
