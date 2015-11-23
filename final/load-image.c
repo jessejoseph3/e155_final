@@ -89,10 +89,10 @@ void write_png_file(char *filename, char *image_one_dim) {
   	png_write_image(png, row_pointers);
  	png_write_end(png, NULL);
 
+ 	fclose(fp);
  	for(y = 0; y < height; y++) {
    		free(row_pointers[y]);
   	}
   	free(row_pointers);
 
-  	fclose(fp);
 }
