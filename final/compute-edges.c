@@ -1,6 +1,6 @@
 #include <math.h>
 
-const double threshold = 0.3;
+const double threshold = 0.15;
 
 
 
