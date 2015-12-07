@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 
-char *file = "obama.png";
+char *file = "blackrectangles.png";
 char *edgesfile = "edges.png";
 char *thin_edgesfile = "thinedges.png";
 
