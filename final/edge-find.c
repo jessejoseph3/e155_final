@@ -79,7 +79,7 @@ void main(int argc, char *argv[])
 	write_png_file(edgesfile,edges);
 
 	char *thinedges = malloc(height*width*sizeof(char));
-	printf("thinning edges...\n");
+	printf("changing format...\n");
 	for(int i = 0; i < height*width; i++){
 		if(edges[i] == 255){
 			thinedges[i] = 0;
@@ -92,10 +92,11 @@ void main(int argc, char *argv[])
 
 
 	
-
+	printf("thinning edges...\n");
 
 	thinedges = lineThinning(thinedges, height, width, 1);
 
+	printf("rechanging format...\n");
 
 	for(int i = 0; i < height*width; i++){
 		if(thinedges[i] == 0){
