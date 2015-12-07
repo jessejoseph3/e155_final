@@ -2,8 +2,6 @@
 
 const double threshold = 0.15;
 
-
-
 double average_difference(int x, int y,
 						int c, int pxsize,
 						png_bytep *row_pointers)
@@ -11,17 +9,17 @@ double average_difference(int x, int y,
 	int i, j;
 	double average = 0.0;
 	for(i = -1; i < 2; i++){
-		png_bytep row = row_pointers[y + i];
-		for(j = -1; j < 2; j++){
-			png_bytep px = &(row[x * pxsize]);
-			average += (double) px[c]/9.0;
+		png_bytep row = row_pointers[y + i];  //load a row
+		for(j = -1; j < 2; j++){              //iterate left and right of pixel
+			png_bytep px = &(row[x * pxsize + j]); //get left/right pixel
+			average += (double) px[c]/9.0;      //add to average
 		}
 	}
 	double avediff = 0.0;
 	for(i = -1; i < 2; i++){
 		png_bytep row = row_pointers[y + i];
 		for(j = -1; j < 2; j++){
-			png_bytep px = &(row[x * pxsize]);
+			png_bytep px = &(row[x * pxsize + j]);
 			avediff += fabs(px[c] - average)/9.0;
 		}
 	}
